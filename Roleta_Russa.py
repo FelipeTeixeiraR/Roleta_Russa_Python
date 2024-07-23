@@ -81,16 +81,3 @@ while life > 0 and olife > 0:
         elif escolha == "2" and tiro == "d":
             print("Descarregado")
             SuaVez = True
-    
-    
-    
-    
-
-
-
-
-
-print(carga)
-print(bullet)
-print(vazia)
-print(ativa)
