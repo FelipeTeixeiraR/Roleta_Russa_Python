@@ -42,6 +42,8 @@ while life > 0 and olife > 0:
     tiro = carga[0]
     if SuaVez == True:
         limpar_terminal()
+        if life <= 0:
+            print("Você Gnahou!!!")
         print("Sua vez.")
         if escolha == "1" and tiro == "c":
             print("Levou Tiro")
@@ -66,6 +68,8 @@ while life > 0 and olife > 0:
             break
     if vezDeOutro == True:
         limpar_terminal()
+        if olife <= 0:
+            print("Outro Gnahou!!!")
         print("Vez de outro.")
         if escolha == "1" and tiro == "c":
             print("Levou Tiro")
