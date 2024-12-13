@@ -13,18 +13,20 @@ int = vazia = random.randrange(1, bullet)
 int = ativa = bullet - vazia
 c = 'c'
 d = 'd'
-vezDeOutro = False
-SuaVez = True
+VezP2 = False
+VezP1 = True
 int = carga = [c] * ativa + [d] * vazia
 random.shuffle(carga)
 carregadas = carga.count('c')
 descarregadas = carga.count('d')
-quantLife = random.randrange(1, 6)
-life = quantLife
-olife = quantLife
+quantP1Life = random.randrange(1, 6)
+P1Life = quantP1Life
+P2Life = quantP1Life
+limpar_terminal()
 print(f"Exitem: {carregadas} balas carregadas\nE existem:  {descarregadas} balas descarregadas")
-print(f"A quantidade de vida desta rodada é:{quantLife}")
-while life > 0 and olife > 0:
+print(f"A quantidade de vida desta rodada é:{quantP1Life}")
+print("Vez de Jogador|1|")
+while P1Life > 0 and P2Life > 0:
     if not carga:
         int = bullet = random.randrange(3, 10)
         int = vazia = random.randrange(1, bullet)
@@ -38,50 +40,52 @@ while life > 0 and olife > 0:
         print(f"Exitem: {carregadas} balas carregadas\nE existem:  {descarregadas} balas descarregadas")
        
     
-    escolha = input("Press 1 para atirar em você mesmo: \nPress 2 para atirar no outro:")
+    escolha = input("Press 1 para atirar no Jogador|1|: \nPress 2 para atirar Jogador|2|:")
     tiro = carga[0]
-    if SuaVez == True:
+    if VezP1 == True:
         limpar_terminal()
-        if life <= 0:
-            print("Você Gnahou!!!")
-        print("Sua vez.")
+        
+        if P1Life <= 0:
+            print("Jogador|1| ganhou!!!")
+        print("Vez de jogar 1.")
         if escolha == "1" and tiro == "c":
-            print("Levou Tiro")
-            life = life - 1
-            vezDeOutro = True
-            print(f"Você tem {life} de vida")
+            print("Jogador|1| levou tiro")
+            P1Life = P1Life - 1
+            VezP2 = True
+            print(f"Jogador|1| tem {P1Life} de vida")
         elif escolha == "2" and tiro == "c":
-            print("Deu tiro em outro")
-            olife = olife - 1
-            print(f"Outro tem {olife} de vida")
+            print("Deu tiro em Jogador|2|")
+            P2Life = P2Life - 1
+            print(f"Jogador|2| tem {P2Life} de vida")
         elif escolha == "1" and tiro == "d":
             print("Descarregado")
         elif escolha == "2" and tiro == "d":
             print("Descarregado")
-            vezDeOutro = True
+            VezP2 = True
         carga.pop(0)
-        if life <= 0:
-            print("Você ganhou") 
+        if P1Life <= 0:
+            print("Jogador|2| ganhou !!!") 
             break
-        if olife <=0:
-            print("Outro ganhou")
+        if P2Life <=0:
+            print("Jogador|1| ganhou!!!")
             break
-    if vezDeOutro == True:
+    if VezP2 == True:
         limpar_terminal()
-        if olife <= 0:
-            print("Outro Gnahou!!!")
-        print("Vez de outro.")
+        if P2Life <= 0:
+            print("Jogador|1|  Ganhou!!!")
+        print("Vez de Jogador|2|.")
         if escolha == "1" and tiro == "c":
-            print("Levou Tiro")
-            olife = olife - 1
-            SuaVez = True
-            print(f"Você tem {olife} de vida")
+            print(" Jogador|2| levou Tiro")
+            P2Life = P2Life - 1
+            VezP1 = True
+            print(f"Jogador|2| tem {P2Life} de vida")
         elif escolha == "2" and tiro == "c":
-            print("Deu tiro em Você")
-            life = life - 1
-            print(f"Você tem {life} de vida")
+            print("Jogador|2| deu tiro em Jogador|1|")
+            P1Life = P1Life - 1
+            print(f"Jogador|1| tem {P1Life} de vida")
         elif escolha == "1" and tiro == "d":
             print("Descarregado")
         elif escolha == "2" and tiro == "d":
             print("Descarregado")
-            SuaVez = True
+            VezP1 = True
+
